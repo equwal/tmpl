@@ -1,4 +1,4 @@
-Templates for all kinds of things.
+Templates for all kinds of things. Just read a file into your editor at the cursor and jump to the <++> locations.
 
 # Using with Vim
 

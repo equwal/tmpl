@@ -1,4 +1,7 @@
+![template jump <++> on a transparent background](https://therealtruex.com/static/tmpl.webp)
 Templates for all kinds of things. Just read a file into your editor at the cursor and jump to the `<++>` locations.
+
+A [therealtruex.com](https://therealtruex.com) project.
 
 Here is one such template:
 ```

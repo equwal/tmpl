@@ -1,11 +1,15 @@
 Templates for all kinds of things.
 
-Using with Vim
----
+# Using with Vim
 
-    :read /path/to/tmpl/thing
+```vim
+:read /path/to/tmpl/thing
+```
+
 
 Make sure to add a templating shortcut to your leader key to jump to
-the <++> spots.
+the`<++>` spots.
+```vim
     -- Templating shortcut
     map("n", "<leader><Space>", "/<++><CR>dt>a<BS>", { desc = "Jump to next template placeholder" })
+```

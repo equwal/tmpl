@@ -1,0 +1,8 @@
+# also see the other direction: readbyte
+writenum () { printf %b `printf \\\\%03o "$@"` ; }
+# eg. writebytenum 65 66 67 0x0 0x20
+
+# Cannot prepend a 0, must be <=3 digits
+writeoctpedantic () { printf %b `printf \\\\%s "$@"` ; }
+# Can prepend a 0 but slow
+writeoctslow () { printf %b $(printf \\%03o $(printf 0%s\  "$@")) ; }

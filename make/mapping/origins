@@ -1,0 +1,2 @@
+# see map-fn for the definition of map and use it
+origins = $(call map,origin,origins map MAKE)

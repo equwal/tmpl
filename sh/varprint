@@ -1,0 +1,2 @@
+# Don't use echo, it isn't portable.
+printf %s\\n "$1"

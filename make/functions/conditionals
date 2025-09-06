@@ -1,0 +1,7 @@
+#if CONDITION,THEN[,ELSE]
+#or CONDITION[,CONDITION[,..]..]
+#and CONDITION[,CONDITION[,..]..]
+#they short circuit
+#true is the non-empty string
+#false is the empty string
+$(<++>)

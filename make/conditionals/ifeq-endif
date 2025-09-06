@@ -1,0 +1,3 @@
+if<++>eq (<++>,<++>) #space before the condition is important
+    <++>
+endif

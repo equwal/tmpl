@@ -1,0 +1,11 @@
+#$(origin VARIABLE)
+#also see the mapped version
+# undefined # a variation on empty
+# default # eg. CC has a default
+# environment # the shell environment
+# environment override # from the environment, and make called with -e
+# file # from the makefile
+# command line # defined on command line
+# override # with override directive
+# automatic # an automatic variable for the rules of the recipe
+$(origin <++>)

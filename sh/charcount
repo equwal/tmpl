@@ -1,0 +1,2 @@
+# cheap hack
+tr a\\n \\na | wc -l

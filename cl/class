@@ -1,0 +1,4 @@
+(defclass <++> (<++>) ; name (inherits)
+  ((<++> :initarg :<++>
+         :accessor <++>))
+  (:documentation "<++>"))

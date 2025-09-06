@@ -1,0 +1,5 @@
+Using the output of find -print robustly
+
+Despite the embedded-newline field-separator-emulation issue of find, it is possible to parse the output robustly. Just remember, “slash dot saves the day.” For each absolute path being searched, prefix the initial “/” with “/.”, and likewise prefix each relative path to be searched with “././” — the string “/./” then becomes a magic synchronization marker for determining if a newline was produced as a field separator or due to embedded newlines in a pathname.
+
+Processing the output is left as an exercise for the reader.

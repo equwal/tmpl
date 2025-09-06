@@ -1,0 +1,5 @@
+fn () {
+    # argument: the name of variable to call-by-reference, output string into.
+    <++>
+    eval "$1=\${<++>}" # Don't clobber trailing newlines.
+}

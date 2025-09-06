@@ -1,0 +1,5 @@
+var := a
+map = $(foreach $(var), $(2), $(call $(1),$(var)))
+# <new-mapped-fn> = $(call map,<old-onearg-fn>,<new-mapped-fn> map MAKE
+<++> = $(call map,<++>,<++> map MAKE)
+# now you can call it

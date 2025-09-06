@@ -1,0 +1,2 @@
+# can't use -exec on shell functions, so do this
+find <++> | while read -r file ; do <++> "$file" ; done

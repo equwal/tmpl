@@ -1,0 +1,9 @@
+  {
+    "id": "<++>",
+    "list": "<++>",
+    "description": "<++>",
+    "dependencies": [<++>],
+    "neededBy": [<++>],
+    "labels": [<++>],
+    "removal": "<++>"
+  },

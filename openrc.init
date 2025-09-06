@@ -1,0 +1,36 @@
+#!/sbin/openrc-run
+
+command="" # absolute path
+command_args="" # pid file, run as daemon
+
+# command_background="yes" # if you can't run as daemon natively
+# pidfile="/run/$RC_SVCNAME.pid" # if you can get one from the command/want to be able to stop it with pid signals
+
+depend() {
+        # Depends on hitch or another reverse proxy with TLS
+        # Depends on a cache/gzipping program such as varnish
+  # add as required
+  #need X X X
+  #want X X X
+	#use X X X
+	#provide X
+  # will start immediately before/after something else (prevents parallelisation)
+  #before X
+  #after x
+}
+
+start() {
+	ebegin "Starting i2pd"
+		start-stop-daemon \
+			--start \
+      # set the name
+			--name NAME # --ionice 2:7 --nicelevel 12 # example nice levels.
+			--exec "$command" \
+            -- $command_args
+	eend $?
+}
+
+
+stop() {
+    start-stop-daemon --stop --quiet --pidfile "/run/$RC_SVCNAME.pid"
+}

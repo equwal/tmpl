@@ -1,0 +1,10 @@
+isempty () {
+    cd "$1"
+    umask 077 # Prevent races
+    set -- .[!.]* ; test -f "$1" && return 1
+    set -- ..?* ; test -f "$1" && return 1
+    set -- * ; test -f "$1" && return 1
+    return 0
+}
+# wreck permissions
+isempty () { umask 077 ; rmdir "$1" && mkdir "$1" ; }

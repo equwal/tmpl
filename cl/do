@@ -1,0 +1,5 @@
+;; * or no *?
+(do<++> ((<++> <++> <++>) ; var initform stepform
+     (<++> <++> <++>)) ; more vars
+    (<++> <++>) ; condition, return
+    (<++>)) ;body

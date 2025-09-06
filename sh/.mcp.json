@@ -1,0 +1,158 @@
+{
+  "mcpServers": {
+    "permissions": {
+      "auto_approved_tools": [
+        "memory",
+        "read-website-fast",
+        "duckduckgo", 
+        "arxiv",
+        "hacker-news",
+        "sequential-thinking"
+      ],
+      "require_permission": [
+        "desktop-commander",
+        "docker",
+        "taskwarrior",
+        "playwright"
+      ],
+      "claude_tools": {
+        "auto_approved": {
+          "read_operations": [
+            "Read",
+            "Glob", 
+            "Grep",
+            "WebFetch",
+            "WebSearch"
+          ],
+          "bash_read_only": [
+            "ls",
+            "cat",
+            "grep",
+            "find",
+            "head",
+            "tail",
+            "wc",
+            "file",
+            "stat",
+            "pwd",
+            "whoami",
+            "date",
+            "ps",
+            "top",
+            "df",
+            "du",
+            "which",
+            "whereis"
+          ]
+        },
+        "require_permission": {
+          "write_operations": [
+            "Write",
+            "Edit",
+            "MultiEdit",
+            "NotebookEdit"
+          ],
+          "bash_write_operations": [
+            "mkdir",
+            "touch",
+            "cp", 
+            "mv",
+            "rm",
+            "chmod",
+            "chown",
+            "git",
+            "npm",
+            "pip",
+            "cargo",
+            "make",
+            "docker",
+            "systemctl",
+            "service"
+          ]
+        }
+      }
+    },
+    "memory": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-knowledge-graph",
+        "--memory-path",
+        "/home/jose/scr/tmpl/sh/.aim/memory.jsonl"
+      ]
+    },
+    "read-website-fast": {
+      "type": "stdio", 
+      "command": "npx",
+      "args": [
+        "-y",
+        "@just-every/mcp-read-website-fast"
+      ]
+    },
+    "desktop-commander": {
+      "type": "stdio",
+      "command": "npx", 
+      "args": [
+        "-y",
+        "@wonderwhy-er/desktop-commander"
+      ]
+    },
+    "sequential-thinking": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-sequential-thinking"
+      ]
+    },
+    "taskwarrior": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y", 
+        "mcp-server-taskwarrior"
+      ]
+    },
+    "playwright": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@automatalabs/mcp-server-playwright"
+      ]
+    },
+    "duckduckgo": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "duckduckgo-mcp-server"
+      ]
+    },
+    "arxiv": {
+      "type": "stdio", 
+      "command": "npx",
+      "args": [
+        "-y",
+        "arxiv-mcp-server"
+      ]
+    },
+    "hacker-news": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-hn"
+      ]
+    },
+    "docker": {
+      "type": "stdio",
+      "command": "npx", 
+      "args": [
+        "-y",
+        "mcp-server-docker"
+      ]
+    }
+  }
+}

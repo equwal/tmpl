@@ -1,0 +1,7 @@
+# example with ncursesw like mtm or dvtm
+CURSESLIB ?= <++>
+LIBS      ?= -l$(CURSESLIB) -lutil
+
+ifeq ("$(shell basename $(shell command -v pkg-config))", "pkg-config")
+    LIBS := $(shell pkg-config --libs $(CURSESLIB))
+endif

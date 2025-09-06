@@ -1,0 +1,6 @@
+checksafe () {
+    # do something here!
+}
+# instead of foo=~$user (doesn't work)
+homedir () { eval "$1=~$2" ; } # consider: rm -f / in $2!
+checksafe && homedir foo alice

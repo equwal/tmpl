@@ -1,0 +1,2 @@
+#value VARIABLE shows value and prevents expansion
+#eval gets evaluated twice

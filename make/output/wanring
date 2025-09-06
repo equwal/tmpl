@@ -1,0 +1,3 @@
+#warning TEXT...
+#doesn't stop execution
+$(warning <++>)

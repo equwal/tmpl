@@ -1,0 +1,5 @@
+# newvar := $(oldvar:old-end-of-word=new-end-of-word)
+# changes all the word endings
+# most common use is:
+# new := $(old:.o=.c)
+<++> := $(<++>:<++>=<++>)

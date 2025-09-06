@@ -1,0 +1,11 @@
+# Handle specific signals gracefully
+cleanup() {
+    echo "Cleaning up..." >&2
+    <++>
+    exit 1
+}
+
+trap cleanup TERM INT QUIT
+
+# Continue with normal execution
+<++>

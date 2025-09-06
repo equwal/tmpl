@@ -1,0 +1,13 @@
+#subst FROM,TO,TEXT # TEXT is the thing being operated against
+#patsubst PATTERN,REPLACEMENT,TEXT # pattern can be %.c for example
+#strip STRING # leading and trailing, good in conditionals
+#findstring FIND,IN # returns empty string of the FIND
+#filter PATTERN....[PATTERN],TEXT # all matches
+#filter-out PATTERN....[PATTERN],TEXT # all non-matches
+#sort LIST # space separated
+#wordlist S,E,LIST # items from 1-based index S to E in LIST
+#words TEXT # number of words in text
+#firstword LIST # first one
+#lastword LIST # last one
+
+$(<++>)

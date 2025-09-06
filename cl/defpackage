@@ -1,0 +1,8 @@
+(defpackage #:<++>
+  (:nicknames #:<++>)
+  (:shadow #:<++>)
+  (:shadowing-import-from #:<++> #:<++>)
+  (:use #:cl #:<++>)
+  (:import-from #:<++> #:<++>) ;; package, symbols*
+  (:intern #:<++>)
+  (:export #:<++>))

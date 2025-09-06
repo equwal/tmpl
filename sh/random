@@ -1,0 +1,5 @@
+# 'gawk' can produce random numbers using srand().  In this example, 10 integers between 1 and 500:
+randpm=$(gawk -v min=1 -v max=500 -v nNum=10 'BEGIN { srand(systime() + PROCINFO["pid"]); for (i = 0; i < nNum; ++i) {print int(min + rand() * (max - min)} }')
+
+# 'nawk' and 'mawk' does the same, but needs a seed to be provided for its rand() function.  In this example we use $(date)
+randpm=$(mawk -v min=1 -v max=500 -v nNum=10 -v seed="$(date +%Y%M%d%H%M%S)" 'BEGIN { srand(seed); for (i = 0; i < nNum; ++i) {print int(min + rand() * (max - min)} }')

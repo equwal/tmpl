@@ -1,0 +1,12 @@
+#foreach VAR,LIST,TEXT
+# VAR and LIST are expanded
+# VAR is set to each item in LIST and TEXT is expanded repeatedly
+# so text is expanded $(words LIST) times
+# you probably will use VAR each time...
+# example:
+# words = I love jesus dick
+# foreach word,$(words),$(shell echo $(word))
+var = <++> # i or something
+list = <++>
+text = <++>
+$(foreach $(var), $(list), $(text))

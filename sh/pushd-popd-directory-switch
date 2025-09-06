@@ -1,0 +1,6 @@
+# LLM generated this genius thing for a Makefile uninstaller
+# pushd build && rm -f file1 file2 ; popd
+
+pushd
+<++>
+popd

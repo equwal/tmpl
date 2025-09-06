@@ -1,0 +1,14 @@
+# sort the lines, then remove duplicates that are next to eachoter
+sort file.txt | uniq
+
+# without resorting (can blow the stack if too large)
+awk '!seen[$0]++' file.txt
+# or
+cat file.txt | awk '!seen[$0]++' >newfile.txt
+
+# GNU sed can do it without blowing the stack.
+# POSIX sed might blow
+sed -n 'G; s/\n/&&/; /^\([ -~]*\n\).*\n\1/d; s/\n//; h; P'
+
+# TODO:
+# number the lines, sort, uniq, re-unsort (best done in a real programming language)

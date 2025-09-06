@@ -1,0 +1,4 @@
+#file OP FILENAME[,TEXT]
+# OP is >, >>, or <
+# empty string on read failure
+$(file <++> <++>)

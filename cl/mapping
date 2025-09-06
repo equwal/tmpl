@@ -1,0 +1,7 @@
+(map 'string #'identity "hi");=>"hi"
+(mapc #'(lambda (x y) (print (+ x y))) '(1 2 3) '(4 5 6));=>(1 2 3)
+(maplist #'nconc '(1 2 3));=> ((1 2 3) (2 3) (3))
+(mapcon #'list '(1 2 3));((1 2 3) (2 3) (3))
+(mapl #'print '(1 2 3));=> (1 2 3)
+(mapcan #'list '(1 2 3 4));=> (1 2 3 4)
+(mapcan #'identity '(1 2 3 4));=> 4

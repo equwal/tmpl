@@ -1,0 +1,7 @@
+# Removes all newlines from the input stream, like holding J on line 1 in vi.
+paste -sd '\0' -
+
+# POSIX note:
+# need the - to read from stdin on BSD
+# posix requires '\0' "no separator". It isn't null-terminated!
+# paste -s is the GNU way

@@ -1,0 +1,8 @@
+:g/re/p is grep!
+:g/re/ applies the command to every line matching
+:v/re/ applies to every line NOT matching
+
+eg:
+:v/re/d is useful for removing some garbage, like in a log file
+:g/re/p gives a nice overview in a print buffer
+:.,+10g/re/d locally does stuff

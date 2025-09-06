@@ -1,0 +1,16 @@
+# Echo, fixed so only the first argument can be flags.
+echo () (
+fmt=%s end=\\n IFS=" "
+
+while [ $# -gt 1 ] ; do
+case "$1" in
+[!-]*|-*[!ne]*) break ;;
+*ne*|*en*) fmt=%b end= ;;
+*n*) end= ;;
+*e*) fmt=%b ;;
+esac
+shift
+done
+
+printf "$fmt$end" "$*"
+)

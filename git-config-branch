@@ -1,0 +1,3 @@
+[remote "<++>"]
+	url = git@github.com:equwal/<++>
+	fetch = +refs/heads/*:refs/remotes/origin/*

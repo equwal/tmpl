@@ -1,0 +1,14 @@
+# Exit on error with context
+set -e
+
+error_handler() {
+    echo "Error on line $1: Command failed with status $2" >&2
+    <++>
+    exit $2
+}
+
+# Note: ERR trap is bash-specific. In POSIX sh, use manual error checking:
+# command || { error_handler $LINENO $?; }
+# For automatic error handling in POSIX sh, you'll need to wrap commands manually
+
+<++>

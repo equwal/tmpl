@@ -1,0 +1,11 @@
+#dir LIST # directory parts and slash
+#notdir LIST # remove not directories from list AND do basename on the rest
+#suffix LIST # get file extensions (.whatever )AND remove items without
+#basename LIST # names without the last part of extensions
+#addsuffix SUFFIX,LIST # mostly for file extensions
+#addprefix PREFIX,LIST # mostly for package prefixes
+#join LIST,LIST # maps the lists and concatenates each item to the corresponding
+#wildcard PATTERN # globbing
+#realpath LIST # abspath without symlinks
+#abspath LIST # abspath without ., .., or repeated /
+$(<++>)

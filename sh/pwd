@@ -1,0 +1,2 @@
+# fixup $PWD
+pwd -P > /dev/null

@@ -1,0 +1,11 @@
+;;; Hash table loop patterns
+(loop for <++> being each hash-key of <++> using (hash-value <++>)
+      <++>)
+
+;;; Just keys:
+(loop for <++> being each hash-key of <++>
+      <++>)
+
+;;; Just values:
+(loop for <++> being each hash-value of <++>
+      <++>)

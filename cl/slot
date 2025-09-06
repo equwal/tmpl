@@ -1,0 +1,8 @@
+(<++> :initarg :<++>
+ :initform <++>
+ ;; :accessor <++>
+ :reader <++>-changed
+ :writer set-<++>
+ :type <++>
+ :allocation <++> ; :class or :instance
+ :documentation "<++>")

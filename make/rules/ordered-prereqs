@@ -1,0 +1,5 @@
+# targets : normal-prereqs | order-only-prereqs [; recipe]
+# <tab>     recipe
+# normal prereqs take precedent
+<++> : <++> | <++>
+	<++>

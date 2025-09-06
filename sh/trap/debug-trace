@@ -1,0 +1,12 @@
+# Enable debug tracing with cleanup
+old_ps4=$PS4
+PS4='+ $0:${LINENO}: '
+
+cleanup_debug() {
+    set +x
+    PS4=$old_ps4
+}
+trap cleanup_debug EXIT
+
+set -x
+<++>

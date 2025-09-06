@@ -1,0 +1,29 @@
+# include PROJECT=name in your config.mk
+
+include config.mk
+
+all:
+
+
+dist:
+	@echo creating dist tarball
+	@mkdir -p ${PROJECT}-${VERSION}
+	@cp -R LICENSE Makefile config.mk bin ${PROJECT}-${VERSION}
+	@tar -cf ${PROJECT}-${VERSION}.tar ${PROJECT}-${VERSION}
+	@gzip ${PROJECT}-${VERSION}.tar
+	@rm -rf ${PROJECT}-${VERSION}
+
+install:
+	@echo installing scripts to ${DESTDIR}${PREFIX}
+	@mkdir -p ${DESTDIR}${PREFIX}
+	@cd bin
+	for i in bin/*;
+    do \
+        cp $$i ${DESTDIR}${PREFIX}/bin; \
+		chmod 755 ${DESTDIR}${PREFIX}/$$i;	\
+	done
+
+uninstall:
+	@echo removing scripts
+	@cd bin
+    for i in ./*; do rm -f ${DESTDIR}${PREFIX}/bin/$$i; done

@@ -1,0 +1,9 @@
+#(write line in the buffer)
+# beginning of line and execute
+0i
+# turn it into the :r! command (execute into buffer)
+:r!<ESC>
+#save line to register c
+"cdd
+# execute c reg in ex
+@c

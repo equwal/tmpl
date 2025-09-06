@@ -1,0 +1,6 @@
+;(defparameter *plist* '(p1 "v1" p2 "v2"));A plist.
+;(defparameter *sym* nil)
+;(setf (symbol-plist *sym*) *plist*) ; => (P1 "v1" P2 "v2")
+;(get *sym* 'p2) ; => "v2"
+;remprop ; delete property
+;getf ; get a property (SETF'able)

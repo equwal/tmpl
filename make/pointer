@@ -1,0 +1,9 @@
+# you use computed variable names as pointers
+x = y
+y = z
+x = y
+y = z
+a := $(x)
+# a = y
+a := $(a)
+# a = z

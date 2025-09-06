@@ -1,0 +1,3 @@
+;;; Yep!
+(eval-when (:compile-toplevel :load-toplevel)
+  (ql:quickload 'cl-who))

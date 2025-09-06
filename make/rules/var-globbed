@@ -1,0 +1,13 @@
+# NOTE: You can do multiple globs too with clever mapping
+# if you store a glob in a variable and dereference it in a rule,
+# it will work UNLESS IT DOESN'T FIND ANY MATCHES, when it will return a
+# string literal instead. So we use a convolution.
+
+# storing a glob as a variable (no matches and it returns literally)
+#patsubst PATTERN,REPLACEMENT,TEXT # pattern can be %.c for example
+#wildcard GLOB
+# you might want multiple variables if you have multiple globs you want
+
+GLOB = $(patsubst <++>,<++>,$(wildcard <++>))
+<++> : $(GLOB)
+	<++>

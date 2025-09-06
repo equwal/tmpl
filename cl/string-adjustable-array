@@ -1,0 +1,1 @@
+(make-array '(0) :element-type 'base-char :fill-pointer 0 :adjustable t)

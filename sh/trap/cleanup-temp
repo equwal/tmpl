@@ -1,0 +1,6 @@
+# Clean up temporary files on exit
+tmpfile=$(mktemp)
+trap 'rm -f "$tmpfile"' EXIT
+
+# Use $tmpfile for your work
+<++>

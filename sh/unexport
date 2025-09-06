@@ -1,0 +1,7 @@
+unexport_all () {
+    eval set -- `export -p`
+    for i do case "$i" in
+    *=*) unset ${i%%=*} ; eval "${i%%=*}=\${i#*=}" ;;
+    esac ; done
+}
+# unexport_all YOUR VARIABLES MOTHERFUCKER

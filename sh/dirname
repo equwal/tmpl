@@ -1,0 +1,2 @@
+# dirname clobbers multiple trailing newlines
+var=$(dirname "$f" ; echo x) ; var=${var%??}

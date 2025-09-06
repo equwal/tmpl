@@ -1,0 +1,5 @@
+# globbing not done in variable declarations
+# use wildcard to do them
+# eg.
+# objs = $(wildcard *.o)
+<++> = $(wildcard <++>)

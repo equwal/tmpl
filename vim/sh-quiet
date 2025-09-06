@@ -1,0 +1,9 @@
+#(write command into the buffer)
+# begin line and insert
+0i
+# make it into the quiet shell command
+:!
+# save line to c register
+"cdd
+# execute reg c in ex
+@c

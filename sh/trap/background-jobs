@@ -1,0 +1,15 @@
+# Clean up background jobs
+cleanup_jobs() {
+    # POSIX-compliant version: jobs -p might not exist, and xargs -r is GNU-specific
+    for pid in $(jobs -p 2>/dev/null || true); do
+        kill "$pid" 2>/dev/null || true
+    done
+    wait
+}
+trap cleanup_jobs EXIT TERM INT
+
+# Start background processes
+<++> &
+
+# carry on
+<++>

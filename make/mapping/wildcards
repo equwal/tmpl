@@ -1,0 +1,2 @@
+# see map-fn and import that too
+wildcards = $(call map,wildcard,wildcards map MAKE)

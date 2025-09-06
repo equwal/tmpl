@@ -1,0 +1,38 @@
+Careful to not use GNU "extensions" in your POSIX sed:
+
+no -i
+no ; (use a newline)
+
+Plan9 sed has:
+sed [ -gln ] [ -e script ] [ -f scriptfile ] [ file ... ]
+
+(range spec)command {args}
+! opposite range spec
+
+a\      text on next line
+text
+
+i\      text on previous line
+txt
+
+c\      replace the line with text (ie. s/^.*$/text/)
+text
+
+N join next line
+
+dD delete pattern space, DELETE FIRST LINE IN PATTERN SPACE
+
+hH pattern space->hold space, APPENDING
+gG hold space->pattern space, APPENDING
+x hold space "exchange" pattern space
+
+pnP print, print and next, PRINT FIRST LINE
+
+= print line number
+{} group commands
+
+r {file} read file into output
+w {file} write (appending) to file
+tb: label jumps
+
+q quit

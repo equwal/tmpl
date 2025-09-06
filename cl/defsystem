@@ -1,0 +1,16 @@
+(defpackage :<++>-system (:use :cl :asdf))
+(in-package :<++>-system)
+(defsystem <++>
+  :name "<++>"
+  :author "<++> <<++>@<++>.<++>>"
+  :version "<++>"
+  :maintainer "<++> <<++>@<++>.<++>>"
+  :license "GNU GPLv3.0"
+  :description "<++>"
+  ;; put the most general files first to minimize the "depends on" use
+  ;; and in that case you'll need :serial t
+  :serial <++>
+  :components ((:file "packages")
+               (:file "<++>" :depends-on ("<++>")))
+  :weakly-depends-on (<++>)
+  :depends-on (<++>))

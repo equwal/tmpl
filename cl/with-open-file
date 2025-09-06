@@ -1,0 +1,5 @@
+(with-open-file (<++> "<++>"
+                 :direction <++> ; :input :output :io
+                 :if-exists <++> ; :supersede :append :overwrite
+                 :if-does-not-exist <++>) ; :create :error
+  <++>)

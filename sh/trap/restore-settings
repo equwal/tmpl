@@ -1,0 +1,14 @@
+# Save and restore shell settings
+old_set=$-
+old_ifs=$IFS
+
+restore_settings() {
+    set +vx; set -$old_set
+    IFS=$old_ifs
+}
+trap restore_settings EXIT
+
+# Change settings for your work
+set -x  # or other settings
+IFS=<++>
+<++>

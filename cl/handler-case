@@ -1,0 +1,6 @@
+(handler-case (progn
+                <++>)
+  (<++> (condition)
+    <++>)
+  (:no-error (result)
+    <++>))

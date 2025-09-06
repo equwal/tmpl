@@ -1,0 +1,12 @@
+# Clean up multiple temporary files/directories
+tmpdir=$(mktemp -d)
+tmpfile1=$(mktemp)
+tmpfile2=$(mktemp)
+
+cleanup() {
+    rm -rf "$tmpdir" "$tmpfile1" "$tmpfile2"
+}
+trap cleanup EXIT
+
+# carry on
+<++>

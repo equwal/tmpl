@@ -1,0 +1,6 @@
+;;; Create a new project with quickproject
+(ql:quickload :quickproject)
+(quickproject:make-project #p"<++>/" 
+                           :depends-on '(<++>)
+                           :author "<++> <<++>@<++>.<++>>"
+                           :license "<++>")

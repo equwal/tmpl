@@ -1,0 +1,10 @@
+# Read into variables
+# from stdin
+IFS= read -r var
+
+# Can't do this:
+# foo | IFS= read var
+# so do this:
+IFS= read var << EOF
+$(foo)
+EOF

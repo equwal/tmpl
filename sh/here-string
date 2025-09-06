@@ -1,0 +1,6 @@
+# BASHISM:
+# avoids use of echo
+bc <<< 5*4 # 20
+# same as:
+# echo '5*4' | bc
+# HERE documents are also a bashism

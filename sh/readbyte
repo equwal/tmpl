@@ -1,0 +1,4 @@
+# also see: writebyte
+read dummy oct << EOF
+$(dd bs=1 count=1|od -b)
+EOF

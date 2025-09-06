@@ -1,0 +1,13 @@
+include config.mk
+
+# A super minimal makefile for deployment of a tarball.
+
+FOLDER="<++>"
+
+dist:
+	@echo creating dist tarball
+	@mkdir -p ${FOLDER}-${VERSION}-temp
+	@cp -R ${FOLDER} ${FOLDER}-${VERSION}-temp
+	@tar -cf ${FOLDER}-${VERSION}.tar ${FOLDER}-${VERSION}-temp
+	@gzip ${FOLDER}-${VERSION}.tar
+	@rm -rf ${FOLDER}-${VERSION}-temp

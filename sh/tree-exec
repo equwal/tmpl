@@ -1,0 +1,13 @@
+# Alternative to find
+# you can do better
+myfind () {
+    cd -P -- "$1"
+    [ $# -lt 3 ] || [ "$PWD" = "$3" ] || exit 1
+    for i in ..?* .[!.]* * ; do
+    [ -e "$i" ] && eval "$2 \"\$i\"" # the subshell issue
+    [ -d "$i" ] && myfind "$i" "$2" "${PWD%/}/$i"
+    done
+}
+
+# handler () { case "$1" in *~) [ -f "$1" ] && rm -f "$1" ;; esac ; }
+# myfind /tmp handler   # Remove all backup files found in /tmp

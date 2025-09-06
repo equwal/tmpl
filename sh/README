@@ -1,0 +1,15 @@
+Portability considerations for shell scratchwork.
+
+For the most part, these are utilities that can be dropped at the top line of
+your script, or they show multiple portable options to do it by example.
+
+POSIX 2008 https://pubs.opengroup.org/onlinepubs/9699919799/
+https://wiki.bash-hackers.org/scripting/nonportable
+https://www.etalabs.net/sh_tricks.html
+
+Editor hint (vim example):
+gg     -- goes to top of file.
+o<ESC> -- inserts new line
+:read /path/to/echo-noarg -- read in a portability function like echo-noarg
+
+etc.

@@ -1,0 +1,2 @@
+# GNU only: since du -h is a GNU extension
+du -h * | sort -g | grep -v "^[0-9.]\+\(M\|K\)"

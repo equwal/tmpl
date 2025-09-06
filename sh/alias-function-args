@@ -1,0 +1,2 @@
+# alias argsinmiddle='f(){ echo "$1" "$2" etc. }; f'
+alias argsinmiddle='f(){ <++> }; f'

@@ -1,0 +1,17 @@
+# Exclusive lock using trap
+lockfile="/var/run/<++>.lock"
+
+cleanup() {
+    rm -f "$lockfile"
+}
+
+# Try to acquire lock
+if ! (set -C; echo $$ > "$lockfile") 2>/dev/null; then
+    echo "Script is already running" >&2
+    exit 1
+fi
+
+trap cleanup EXIT TERM INT
+
+# Your exclusive work here
+<++>

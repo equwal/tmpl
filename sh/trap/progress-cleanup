@@ -1,0 +1,21 @@
+# Show progress and clean up on interruption
+current_task=""
+
+progress_cleanup() {
+    if [ -n "$current_task" ]; then
+        echo "Interrupted during: $current_task" >&2
+    fi
+    <++>
+    exit 1
+}
+
+trap progress_cleanup TERM INT
+
+# Set current_task before each major operation
+current_task="<++>"
+<++>
+
+current_task="<++>"
+<++>
+
+current_task=""

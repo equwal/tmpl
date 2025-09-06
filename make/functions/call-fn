@@ -1,0 +1,11 @@
+#call VARIABLE,PARAM,PARAM,...
+#the variable contains a complex expression to be expanded
+#the params go into $(1), $(2),...etc. for expansion
+#nesting works and scoping works
+#example:
+#reverse = $(2) $(1)
+#$(call reverse,a,b)
+#b a
+#
+# see mapping function utils for some madness
+$(call <++>)

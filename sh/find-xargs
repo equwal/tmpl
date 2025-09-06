@@ -1,0 +1,11 @@
+# -print0/-0 is a GNU extension
+# Whitespace-quoting solution
+#         quote in-arg whitespace
+find <++> | sed 's/./\\&/g' | xargs <++>
+
+# POSIX + solution
+if find /dev/null -exec true '{}' + ; then # POSIX '+' support?
+    find <++> -exec <++> '{}' + # POSIX hack fills command line
+else
+    find <++> -exec <++> '{}' \; # slower if + not supported
+fi

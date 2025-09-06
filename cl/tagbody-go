@@ -1,0 +1,6 @@
+(tagbody
+   place-1
+   (go place-1)
+   <++>
+   (go place-2)
+   place-2)

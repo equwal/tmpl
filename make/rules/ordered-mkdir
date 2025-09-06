@@ -1,0 +1,14 @@
+# use ordered prereqs in a recipe to make a folder
+# then do stuff in it
+
+FOLDER := <++> # which we are going to make FIRST
+FILES := <++> # for AFTER we make the folder
+
+$(FOLDER)<++> : <++> # do stuff in the new folder
+	<++>
+
+$(FILES) : | $(FOLDER)
+	# just to call the $(FOLDER) recipe
+
+$(FOLDER) :
+	@mkdir $(FOLDER)

@@ -1,0 +1,17 @@
+# Three methods here:
+
+if hash ls >/dev/null 2>&1; then
+  echo "ls is available"
+fi
+
+for name in ls grep sed awk; do
+  if ! hash "$name" >/dev/null 2>&1; then
+    echo "FAIL: Missing command '$name'"
+    exit 1
+  fi
+done
+
+if command -v sed >/dev/null 2>&1; then
+  echo "sed is available"
+fi
+

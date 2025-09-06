@@ -1,0 +1,4 @@
+# Swap first line for #!/bin/sh naively
+
+sed '1c\
+#!/bin/sh'

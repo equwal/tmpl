@@ -1,0 +1,17 @@
+# Timeout handler
+timeout_handler() {
+    echo "Operation timed out" >&2
+    <++>
+    exit 1
+}
+
+trap timeout_handler ALRM
+
+(sleep <++>; kill -ALRM $$) &
+alarm_pid=$!
+
+# time-sensitive work
+<++>
+
+# Cancel alarm if completed
+kill $alarm_pid 2>/dev/null || true

@@ -1,0 +1,4 @@
+case $DIR in
+  /*) echo "absolute path" ;;
+  *) echo "something else" ;;
+esac

@@ -4,6 +4,11 @@ Templates for all kinds of things. Just read a file into your editor at the curs
 
 A [therealtruex.com](https://therealtruex.com) project.
 
+vim config:
+```
+map <leader><Space> /<CR><++><BS>
+```
+
 Here is one such template:
 ```
 (defpackage :<++>-system (:use :cl :asdf))

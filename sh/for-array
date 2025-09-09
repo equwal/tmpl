@@ -1,3 +1,4 @@
+#
 # Yes, it really is this hard to do
 # and it is broken on GNU non-POSIX non-+ support.
 save () {
@@ -5,14 +6,9 @@ save () {
     echo " "
 }
 
-
-findarray () {
-    find "$@" -exec sh -c "for i do printf %s\\\\n \"\$i\" \\
-    | sed \"s/'/'\\\\\\\\''/g;1s/^/'/;\\\$s/\\\$/' \\\\\\\\/\"
-    done" dummy '{}' +
-}
-
 old=$(save "$@")
-eval "set -- $(findarray path)"
-for i do <++> ; done
+myarray=$(save "$@")
+set -- foo bar baz boo
+eval "set -- $myarray"
+for i ; do <++> ; done
 eval "set -- $old"

@@ -1,6 +1,13 @@
 # LLM generated this genius thing for a Makefile uninstaller
 # pushd build && rm -f file1 file2 ; popd
 
-pushd
-<++>
-popd
+# not posix
+# pushd <++>
+# <++>
+# popd
+
+# posix: use a subshell for fake pushd/popd
+( # pushd
+  cd <++>
+  <++>
+) # popd

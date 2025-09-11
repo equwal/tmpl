@@ -42,3 +42,8 @@ the `<++>` spots.
     -- Templating shortcut
     map("n", "<leader><Space>", "/<++><CR>dt>a<BS>", { desc = "Jump to next template placeholder" })
 ```
+
+POSIX shell tricks
+Many of the shell tricks taken from here:
+https://www.etalabs.net/sh_tricks.html
+Especially for-find, a nightmare fixed-point solution.

@@ -1,0 +1,31 @@
+# Cursed shell redirection
+
+<++> 2>&1 # stderr goes wherever stdout is going
+
+# Order matters
+<++> >/dev/null 2>&1 # silence
+nohup <++> >/dev/null 2>&1 # keeps going even if you hang up (close) the terminal. anti-trap.
+nohup <++> >/dev/null 2>&1 & # and async
+<++> >output.log 2>error.log
+<++> >output.log 2>&1 | tee combined.log
+<++> 2>&1 | tee combined.log >/dev/null # only stderr
+
+# File descriptor swapping
+<++> 3>&1 1>&2 2>&3 3>&- # swap stdout and stderr using fd3
+{ <++>; } 2>&1 # group commands
+
+# POSIX-compliant error filtering (replaces process substitution)
+<++> 2>&1 >/dev/null | grep ERROR >&2  # filter stderr through grep, discard stdout
+<++> 2>/tmp/stderr.$$ >/dev/null; grep ERROR < /tmp/stderr.$$ >&2; rm -f /tmp/stderr.$$  # alternative using temp file
+
+# Tests/examples:
+#
+# ls /nonexistent 2>&1
+# ls /nonexistent >/dev/null 2>&1
+# nohup echo "test message" >/dev/null 2>&1
+# nohup sleep 1 >/dev/null 2>&1 & echo "Background job started"
+# { echo "stdout message"; echo "stderr message" >&2; } >output.log 2>error.log; cat output.log; cat error.log; rm output.log error.log
+# { echo "stdout"; echo "stderr" >&2; } >output.log 2>&1 | tee combined.log; cat combined.log; rm output.log combined.log
+# { echo "stdout"; echo "stderr" >&2; } 2>&1 | tee combined.log >/dev/null; cat combined.log; rm combined.log
+# { echo "stdout"; echo "stderr" >&2; } 3>&1 1>&2 2>&3 3>&-
+# { echo "stdout"; echo "stderr" >&2; } 2>&1

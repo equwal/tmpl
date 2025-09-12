@@ -1,0 +1,7 @@
+# Use this command to try an example (in this case, the D sed command).
+# the line's contents -- but not the newline at the end -- will be deleted with
+# same as sed 's/^pattern.*//'
+sed '/^<++>/D' 
+# Compare with
+sed '/^<++>/d'
+# which also deletes the newline

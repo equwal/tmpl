@@ -1,2 +1,3 @@
+;; dotimes counted loop
 (dotimes (<++> <++> <++>) ; var count optional-return
          <++>) ; optional-body

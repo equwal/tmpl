@@ -1,3 +1,4 @@
-[remote "<++>"]
-	url = git@github.com:equwal/<++>
+# git remote section for a GitHub repository
+[remote "<+remote+>"]
+	url = git@github.com:equwal/<+repository+>
 	fetch = +refs/heads/*:refs/remotes/origin/*

@@ -1,3 +1,4 @@
+# dir, notdir, suffix, basename: file name functions
 #dir LIST # directory parts and slash
 #notdir LIST # remove not directories from list AND do basename on the rest
 #suffix LIST # get file extensions (.whatever )AND remove items without

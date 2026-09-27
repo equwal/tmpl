@@ -1,4 +1,4 @@
-# Use this command to try an example (in this case, the D sed command).
+# Delete matching lines with D (keeps the newline) or d
 # the line's contents -- but not the newline at the end -- will be deleted with
 # same as sed 's/^pattern.*//'
 sed '/^<++>/D' 

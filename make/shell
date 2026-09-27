@@ -1,1 +1,2 @@
+# Run a shell command and capture its output
 $(shell <++>)

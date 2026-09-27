@@ -1,3 +1,4 @@
+# Replace the word ending in every word of a variable
 # newvar := $(oldvar:old-end-of-word=new-end-of-word)
 # changes all the word endings
 # most common use is:

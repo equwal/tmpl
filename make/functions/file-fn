@@ -1,3 +1,4 @@
+# file: read or write a file
 #file OP FILENAME[,TEXT]
 # OP is >, >>, or <
 # empty string on read failure

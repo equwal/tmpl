@@ -1,3 +1,4 @@
+;; with-open-file with direction and if-exists options
 (with-open-file (<++> "<++>"
                  :direction <++> ; :input :output :io
                  :if-exists <++> ; :supersede :append :overwrite

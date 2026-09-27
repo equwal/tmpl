@@ -1,3 +1,4 @@
+# Minimal makefile that builds a release tarball
 include config.mk
 
 # A super minimal makefile for deployment of a tarball.

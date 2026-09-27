@@ -1,4 +1,4 @@
-#
+# Iterate over a saved argument list in POSIX sh
 # Yes, it really is this hard to do
 # and it is broken on GNU non-POSIX non-+ support.
 save () {
@@ -7,8 +7,9 @@ save () {
 }
 
 old=$(save "$@")
+set -- <++>
 myarray=$(save "$@")
-set -- foo bar baz boo
 eval "set -- $myarray"
 for i ; do <++> ; done
 eval "set -- $old"
+# Test: set -- foo bar baz boo

@@ -1,1 +1,2 @@
+# Declare the standard phony targets
 .PHONY: install uninstall clean <++> # etc.

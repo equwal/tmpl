@@ -1,3 +1,4 @@
+# call: expand a variable as a function with parameters
 #call VARIABLE,PARAM,PARAM,...
 #the variable contains a complex expression to be expanded
 #the params go into $(1), $(2),...etc. for expansion

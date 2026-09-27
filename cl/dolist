@@ -1,2 +1,3 @@
+;; dolist over a list
 (dolist (<++> <++>) ; var listform
         <++>) ; body

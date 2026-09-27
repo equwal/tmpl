@@ -1,3 +1,4 @@
+# ifeq/ifneq conditional block
 if<++>eq (<++>,<++>) #space before the condition is important
     <++>
 endif

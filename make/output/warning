@@ -1,3 +1,4 @@
+# warning: print a message and continue
 #warning TEXT...
 #doesn't stop execution
 $(warning <++>)

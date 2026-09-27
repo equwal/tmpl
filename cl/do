@@ -1,4 +1,4 @@
-;; * or no *?
+;; do or do* loop with two variables
 (do<++> ((<++> <++> <++>) ; var initform stepform
      (<++> <++> <++>)) ; more vars
     (<++> <++>) ; condition, return

@@ -1,3 +1,4 @@
+# origin: the values it can return
 #$(origin VARIABLE)
 #also see the mapped version
 # undefined # a variation on empty

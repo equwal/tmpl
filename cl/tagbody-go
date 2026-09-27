@@ -1,3 +1,4 @@
+;; tagbody with go labels
 (tagbody
    place-1
    (go place-1)

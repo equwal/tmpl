@@ -1,3 +1,4 @@
+# subst, patsubst, strip, findstring: text functions
 #subst FROM,TO,TEXT # TEXT is the thing being operated against
 #patsubst PATTERN,REPLACEMENT,TEXT # pattern can be %.c for example
 #strip STRING # leading and trailing, good in conditionals

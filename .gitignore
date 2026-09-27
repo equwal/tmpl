@@ -1,0 +1,7 @@
+.aim/
+.claude/
+.mcp.json
+CLAUDE.md
+__pycache__/
+.hypothesis/
+.venv/

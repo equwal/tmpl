@@ -6,7 +6,7 @@ A [therealtruex.com](https://therealtruex.com) project.
 
 vim config:
 ```
-map <leader><Space> /<CR><++><BS>
+map <leader><Space> /<++><CR>dt>a<BS>
 ```
 
 Here is one such template:

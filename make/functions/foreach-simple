@@ -1,2 +1,2 @@
-# see complex for more info
+# foreach over a list (see foreach-complex for more)
 $(foreach <++>, <++>, <++>)

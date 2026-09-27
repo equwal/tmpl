@@ -1,1 +1,2 @@
+# Set a variable only when it is not set already
 <++> ?= <++>

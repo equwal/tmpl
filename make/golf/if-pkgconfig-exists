@@ -1,4 +1,4 @@
-# example with ncursesw like mtm or dvtm
+# Use pkg-config for a library when it is installed (example: ncursesw)
 CURSESLIB ?= <++>
 LIBS      ?= -l$(CURSESLIB) -lutil
 

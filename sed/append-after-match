@@ -1,1 +1,2 @@
+# Append a line after the first line that matches
 sed "/# Use a comment for example to mark where you want to append/a\\$1" (FILE)<++>

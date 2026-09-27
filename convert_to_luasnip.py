@@ -30,7 +30,11 @@ ROOT_FILE_MAP = {
     "uad.json": "json",
 }
 
-PLACEHOLDER_RE = re.compile(r"<\+\+>")
+# <++> is an unnamed placeholder. <+name+> is a named placeholder.
+PLACEHOLDER_RE = re.compile(r"<\+([^+>]*)\+>")
+
+# A summary comment on the first line of a template, in any supported comment syntax.
+HEAD_COMMENT_RE = re.compile(r"^\s*(?:#+|;+|//|<!--)\s*(.*?)\s*(?:-->)?\s*$")
 
 
 def escape_snippet_text(text: str) -> str:
@@ -39,12 +43,18 @@ def escape_snippet_text(text: str) -> str:
 
 
 def convert_placeholders(content: str) -> Tuple[str, int]:
-    """Replace each <++> with a numbered tab stop. Escape all other text."""
+    """Replace each placeholder with a numbered tab stop. Escape all other text.
+
+    <++> becomes ${n}. <+name+> becomes ${n:name}.
+    """
     parts = PLACEHOLDER_RE.split(content)
     body = escape_snippet_text(parts[0])
-    for index, part in enumerate(parts[1:], start=1):
-        body += "${" + str(index) + "}" + escape_snippet_text(part)
-    return body, len(parts) - 1
+    count = 0
+    for name, text in zip(parts[1::2], parts[2::2]):
+        count += 1
+        stop = f"${{{count}:{escape_snippet_text(name)}}}" if name else f"${{{count}}}"
+        body += stop + escape_snippet_text(text)
+    return body, count
 
 
 def generate_snippet_name(filepath: Path, template_dir: Path) -> str:
@@ -54,7 +64,13 @@ def generate_snippet_name(filepath: Path, template_dir: Path) -> str:
 
 
 def get_description(filepath: Path, template_dir: Path) -> str:
-    """Describe the snippet by its path."""
+    """Use the summary comment on the first line. Fall back to the path."""
+    lines = filepath.read_text(encoding="utf-8").splitlines()
+    if lines and lines[0].startswith("#!"):
+        lines = lines[1:]
+    match = HEAD_COMMENT_RE.match(lines[0]) if lines else None
+    if match and match.group(1):
+        return match.group(1)
     rel_path = filepath.relative_to(template_dir)
     return f"{rel_path} template"
 

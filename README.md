@@ -38,23 +38,33 @@ Two kinds of file live here:
   most of `sh/`). They are notes to read or `:read` in whole. The snippet
   converter skips them.
 
+# Conventions
+
+- The first line of a template is a one-line summary in the language's
+  comment syntax (`#`, `;;`, `//` or `<!-- -->`). Tools read it as the
+  description. A `#!` line may come before it.
+- `<++>` marks a spot to fill. `<+name+>` does the same and names the spot,
+  for example `<+remote+>`. The snippet converter turns the name into the
+  placeholder text. Use the plain form unless a name helps.
+
 # Using with Vim
 
 ```vim
 :read /path/to/tmpl/thing
 ```
 
-Add a shortcut on your leader key that jumps to the next `<++>`, deletes it,
-and leaves you in insert mode.
+Add a shortcut on your leader key that jumps to the next placeholder, deletes
+it, and leaves you in insert mode. The pattern matches both `<++>` and
+`<+name+>`.
 
 Vimscript:
 ```vim
-map <leader><Space> /<++><CR>dt>a<BS>
+map <leader><Space> /<+.\{-}+><CR>dt>a<BS>
 ```
 
 Lua:
 ```lua
-map("n", "<leader><Space>", "/<++><CR>dt>a<BS>", { desc = "Jump to next template placeholder" })
+map("n", "<leader><Space>", "/<+.\\{-}+><CR>dt>a<BS>", { desc = "Jump to next template placeholder" })
 ```
 
 # Using with Neovim and LuaSnip
@@ -77,8 +87,9 @@ require("luasnip.loaders.from_vscode").lazy_load({
 ```
 
 The snippet prefix is the path with dashes: `c/main.c` is `c-main`,
-`sh/trap/cleanup-temp` is `sh-trap-cleanup-temp`. Type the prefix, press Tab,
-and Tab again to move between the placeholders.
+`sh/trap/cleanup-temp` is `sh-trap-cleanup-temp`. The description is the
+template's summary comment. Type the prefix, press Tab, and Tab again to move
+between the placeholders.
 
 Tests:
 ```sh

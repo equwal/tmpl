@@ -90,3 +90,37 @@ def test_write_creates_package_json(tmp_path):
     package = json.loads((out / "package.json").read_text())
     assert package["contributes"]["snippets"] == [{"language": "sh", "path": "./sh.json"}]
     assert json.loads((out / "sh.json").read_text())["sh-x"]["prefix"] == "sh-x"
+
+
+def test_named_placeholder_becomes_named_tab_stop():
+    body, count = conv.convert_placeholders("[remote \"<+name+>\"] <++>")
+    assert body == '[remote "${1:name}"] ${2}'
+    assert count == 2
+
+
+@given(st.text(alphabet=st.characters(blacklist_characters="+>"), min_size=1, max_size=8))
+def test_named_placeholder_name_is_escaped(name):
+    body, _ = conv.convert_placeholders(f"<+{name}+>")
+    assert body == "${1:" + conv.escape_snippet_text(name) + "}"
+
+
+def test_description_comes_from_head_comment(tmp_path):
+    root = tmp_path / "tmpl"
+    (root / "sh").mkdir(parents=True)
+    f = root / "sh" / "thing"
+    f.write_text("#!/bin/sh\n# Print the thing\necho <++>\n")
+    assert conv.get_description(f, root) == "Print the thing"
+    g = root / "sh" / "lisp"
+    g.write_text(";; Lisp style\n(<++>)\n")
+    assert conv.get_description(g, root) == "Lisp style"
+    h = root / "sh" / "page"
+    h.write_text("<!-- Html style -->\n<++>\n")
+    assert conv.get_description(h, root) == "Html style"
+
+
+def test_description_falls_back_to_path(tmp_path):
+    root = tmp_path / "tmpl"
+    (root / "sh").mkdir(parents=True)
+    f = root / "sh" / "bare"
+    f.write_text("echo <++>\n")
+    assert conv.get_description(f, root) == "sh/bare template"

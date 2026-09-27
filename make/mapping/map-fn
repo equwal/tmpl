@@ -1,3 +1,4 @@
+# Define a map function from a one-argument function
 var := a
 map = $(foreach $(var), $(2), $(call $(1),$(var)))
 # <new-mapped-fn> = $(call map,<old-onearg-fn>,<new-mapped-fn> map MAKE

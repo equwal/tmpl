@@ -1,3 +1,4 @@
+;; handler-case with a :no-error clause
 (handler-case (progn
                 <++>)
   (<++> (condition)

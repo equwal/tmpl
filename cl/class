@@ -1,4 +1,5 @@
-(defclass <++> (<++>) ; name (inherits)
-  ((<++> :initarg :<++>
-         :accessor <++>))
-  (:documentation "<++>"))
+;; defclass with one slot
+(defclass <+name+> (<+superclass+>)
+  ((<+slot+> :initarg :<+slot+>
+         :accessor <+slot+>))
+  (:documentation "<+doc+>"))

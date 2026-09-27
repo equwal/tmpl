@@ -1,3 +1,4 @@
+;; ASDF defsystem with its own package
 (defpackage :<++>-system (:use :cl :asdf))
 (in-package :<++>-system)
 (defsystem <++>

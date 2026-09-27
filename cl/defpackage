@@ -1,3 +1,4 @@
+;; defpackage with every common option
 (defpackage #:<++>
   (:nicknames #:<++>)
   (:shadow #:<++>)

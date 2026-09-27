@@ -1,2 +1,3 @@
+;; with-simple-restart around a body
 (with-simple-restart (<++> "<++>")
   <++>)

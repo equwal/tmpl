@@ -1,3 +1,4 @@
+;; defclass slot with every option
 (<++> :initarg :<++>
  :initform <++>
  ;; :accessor <++>

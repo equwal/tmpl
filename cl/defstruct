@@ -1,3 +1,4 @@
+;; defstruct with options and one slot
 (defstruct (<++> :<++> <++>) ; name and options*
   "<++>"
   (<++> <++> :<++> <++>) ; name initform options*

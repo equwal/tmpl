@@ -124,3 +124,6 @@ def test_description_falls_back_to_path(tmp_path):
     f = root / "sh" / "bare"
     f.write_text("echo <++>\n")
     assert conv.get_description(f, root) == "sh/bare template"
+    g = root / "sh" / "cfile"
+    g.write_text("#include <stdio.h>\n<++>\n")
+    assert conv.get_description(g, root) == "sh/cfile template"

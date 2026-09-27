@@ -47,6 +47,22 @@ Two kinds of file live here:
   for example `<+remote+>`. The snippet converter turns the name into the
   placeholder text. Use the plain form unless a name helps.
 
+# Finding a template
+
+`bin/tmpl` lists and prints templates. Put it on your `PATH` or call it by
+path.
+
+```sh
+tmpl -l                    # list every file with its summary
+tmpl -f                    # pick one with fzf and print it
+tmpl sh for-find           # print sh/for-find
+tmpl sh/trap/cleanup-temp  # the same, as one path
+```
+
+In Vim, `:r !tmpl sh for-find` reads a template in at the cursor.
+
+[INDEX.md](INDEX.md) is the same list as a table. `make index` regenerates it.
+
 # Using with Vim
 
 ```vim

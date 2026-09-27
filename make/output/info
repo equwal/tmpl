@@ -1,2 +1,3 @@
+# info: print a message
 #info TEXT...
 $(info <++>)

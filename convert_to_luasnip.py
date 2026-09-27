@@ -34,7 +34,7 @@ ROOT_FILE_MAP = {
 PLACEHOLDER_RE = re.compile(r"<\+([^+>]*)\+>")
 
 # A summary comment on the first line of a template, in any supported comment syntax.
-HEAD_COMMENT_RE = re.compile(r"^\s*(?:#+|;+|//|<!--)\s*(.*?)\s*(?:-->)?\s*$")
+HEAD_COMMENT_RE = re.compile(r"^\s*(?:#+|;+|//|<!--)\s+(.*?)\s*(?:-->)?\s*$")
 
 
 def escape_snippet_text(text: str) -> str:

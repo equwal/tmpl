@@ -1,0 +1,51 @@
+#!/bin/sh
+# Print, list or pick templates from the tmpl repository.
+#
+# usage: tmpl -l            list templates as "path<TAB>summary"
+#        tmpl -f            pick a template with fzf and print it
+#        tmpl LANG NAME     print a template, for example: tmpl sh for-find
+#        tmpl PATH          print a template, for example: tmpl sh/trap/cleanup-temp
+#
+# TMPL_DIR overrides the template directory. The default is the parent of
+# the directory that holds this script.
+
+set -eu
+
+root=${TMPL_DIR:-$(cd "$(dirname "$0")/.." && pwd)}
+
+usage() {
+    sed -n '2,8p' "$0" | sed 's/^# \{0,1\}//' >&2
+    exit 2
+}
+
+# Print every template path relative to $root, one per line.
+list_paths() {
+    find "$root" -type f \
+        ! -path '*/.*' ! -path '*/__pycache__/*' \
+        ! -path "$root/bin/*" \
+        ! -name '*.py' ! -name '*.md' ! -name Makefile \
+        | sed "s|^$root/||" | sort
+}
+
+# Print the summary comment on the first line of a file. A #! line may come first.
+summary() {
+    awk 'NR == 1 && /^#!/ { next }
+         /^[ \t]*(#+|;+|\/\/|<!--)[ \t]+/ { sub(/^[ \t]*(#+|;+|\/\/|<!--)[ \t]+/, ""); sub(/[ \t]*-->[ \t]*$/, ""); print }
+         { exit }' "$1"
+}
+
+list() {
+    list_paths | while IFS= read -r path; do
+        printf '%s\t%s\n' "$path" "$(summary "$root/$path")"
+    done
+}
+
+case ${1:-} in
+    -l) list ;;
+    -f) pick=$(list | fzf --with-nth=1,2 --delimiter='\t' | cut -f1 | head -n 1)
+        [ -n "$pick" ] && cat "$root/$pick" ;;
+    -h|--help|'') usage ;;
+    *)  path=$(printf '%s/' "$@" | sed 's|/$||')
+        [ -f "$root/$path" ] || { printf 'tmpl: no template %s\n' "$path" >&2; exit 1; }
+        cat "$root/$path" ;;
+esac

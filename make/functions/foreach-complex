@@ -1,3 +1,4 @@
+# foreach: expand text once per list item
 #foreach VAR,LIST,TEXT
 # VAR and LIST are expanded
 # VAR is set to each item in LIST and TEXT is expanded repeatedly

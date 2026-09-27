@@ -24,7 +24,7 @@ list_paths() {
         ! -path '*/.*' ! -path '*/__pycache__/*' \
         ! -path "$root/bin/*" ! -path "$root/tests/*" \
         ! -name '*.py' ! -name '*.md' ! -name Makefile \
-        | sed "s|^$root/||" | sort
+        | sed "s|^$root/||" | LC_ALL=C sort
 }
 
 # Print the summary comment on the first line of a file. A #! line may come first.

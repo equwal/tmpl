@@ -7,8 +7,9 @@ save () {
 }
 
 old=$(save "$@")
+set -- <++>
 myarray=$(save "$@")
-set -- foo bar baz boo
 eval "set -- $myarray"
 for i ; do <++> ; done
 eval "set -- $old"
+# Test: set -- foo bar baz boo

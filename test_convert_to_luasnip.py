@@ -1,10 +1,9 @@
 """Tests for convert_to_luasnip."""
 
 import json
-import re
 from pathlib import Path
 
-from hypothesis import given
+from hypothesis import given, settings
 from hypothesis import strategies as st
 
 import convert_to_luasnip as conv
@@ -12,29 +11,57 @@ import convert_to_luasnip as conv
 PLACEHOLDER = "<++>"
 
 
-def unescape(text: str) -> str:
-    """Reverse VSCode snippet escaping. Reference for the round trip."""
-    return re.sub(r"\\([\\$}])", r"\1", text)
+def parse_snippet(body: str):
+    """Reference parser for VSCode snippet text.
+
+    Return the source text with placeholders restored, and the list of tab
+    stop numbers in order. This is the inverse of convert_placeholders.
+    """
+    out, stops, i = [], [], 0
+    while i < len(body):
+        c = body[i]
+        if c == "\\" and i + 1 < len(body) and body[i + 1] in "\\$}":
+            out.append(body[i + 1])
+            i += 2
+        elif body.startswith("${", i):
+            i += 2
+            inner = []
+            while body[i] != "}":
+                if body[i] == "\\" and body[i + 1] in "\\$}":
+                    inner.append(body[i + 1])
+                    i += 2
+                else:
+                    inner.append(body[i])
+                    i += 1
+            i += 1
+            num, _, name = "".join(inner).partition(":")
+            stops.append(num)
+            out.append(f"<+{name}+>" if name else PLACEHOLDER)
+        else:
+            assert c not in "$}", f"unescaped {c!r} at {i} in {body!r}"
+            out.append(c)
+            i += 1
+    return "".join(out), stops
 
 
 text_without_placeholder = st.text().filter(lambda s: "<+" not in s)
 
 
+@settings(max_examples=500)
 @given(text_without_placeholder)
 def test_escape_round_trip(text):
     body, count = conv.convert_placeholders(text)
     assert count == 0
-    assert unescape(body) == text
+    assert parse_snippet(body) == (text, [])
 
 
+@settings(max_examples=500)
 @given(st.lists(text_without_placeholder, min_size=1, max_size=6))
 def test_placeholder_count_matches_tab_stops(chunks):
     source = PLACEHOLDER.join(chunks)
     body, count = conv.convert_placeholders(source)
     assert count == len(chunks) - 1
-    stops = re.findall(r"(?<!\\)\$\{(\d+)\}", body)
-    assert stops == [str(i) for i in range(1, count + 1)]
-    assert unescape(re.sub(r"(?<!\\)\$\{\d+\}", PLACEHOLDER, body)) == source
+    assert parse_snippet(body) == (source, [str(i) for i in range(1, count + 1)])
 
 
 def test_shell_variable_is_escaped():
@@ -98,10 +125,12 @@ def test_named_placeholder_becomes_named_tab_stop():
     assert count == 2
 
 
+@settings(max_examples=500)
 @given(st.text(alphabet=st.characters(blacklist_characters="+>"), min_size=1, max_size=8))
-def test_named_placeholder_name_is_escaped(name):
-    body, _ = conv.convert_placeholders(f"<+{name}+>")
-    assert body == "${1:" + conv.escape_snippet_text(name) + "}"
+def test_named_placeholder_round_trip(name):
+    body, count = conv.convert_placeholders(f"<+{name}+>")
+    assert count == 1
+    assert parse_snippet(body) == (f"<+{name}+>", ["1"])
 
 
 def test_description_comes_from_head_comment(tmp_path):
@@ -127,3 +156,16 @@ def test_description_falls_back_to_path(tmp_path):
     g = root / "sh" / "cfile"
     g.write_text("#include <stdio.h>\n<++>\n")
     assert conv.get_description(g, root) == "sh/cfile template"
+
+
+REPO = Path(__file__).resolve().parent
+
+
+def test_every_repo_template_has_a_summary():
+    """Every file with a placeholder starts with a summary comment. JSON has no comments."""
+    missing = []
+    for lang, snippets in conv.collect_templates_by_language(REPO).items():
+        for snippet in snippets:
+            if lang != "json" and snippet["description"].endswith(" template"):
+                missing.append(snippet["prefix"])
+    assert missing == []

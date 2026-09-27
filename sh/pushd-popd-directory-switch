@@ -8,6 +8,6 @@
 
 # posix: use a subshell for fake pushd/popd
 ( # pushd
-  cd <++>
+  cd <++> || exit
   <++>
 ) # popd

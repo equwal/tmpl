@@ -107,11 +107,17 @@ The snippet prefix is the path with dashes: `c/main.c` is `c-main`,
 template's summary comment. Type the prefix, press Tab, and Tab again to move
 between the placeholders.
 
-Tests:
+# Checks
+
 ```sh
 python3 -m pip install pytest hypothesis
-python3 -m pytest
+make check
 ```
+
+`make check` parses the shell templates with `sh -n` and `shellcheck`,
+compiles the C templates, reads the Lisp templates with `sbcl` when it is
+installed, runs the Python tests, and confirms `INDEX.md` is current. The
+GitHub Actions workflow runs the same target.
 
 # POSIX shell tricks
 

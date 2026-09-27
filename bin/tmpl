@@ -22,7 +22,7 @@ usage() {
 list_paths() {
     find "$root" -type f \
         ! -path '*/.*' ! -path '*/__pycache__/*' \
-        ! -path "$root/bin/*" \
+        ! -path "$root/bin/*" ! -path "$root/tests/*" \
         ! -name '*.py' ! -name '*.md' ! -name Makefile \
         | sed "s|^$root/||" | sort
 }
